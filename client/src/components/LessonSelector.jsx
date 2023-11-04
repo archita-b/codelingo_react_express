@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getLessons } from "../requests";
 
 export default function LessonSelector({ setSelectedLesson }) {
   const [lessonData, setLessonData] = useState([]);
 
-  // useEffect(() => {
-  //   getLessons().then((data) => {
-  //     if (data) setLessonData(data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getLessons().then((data) => {
+      if (data) setLessonData(data);
+    });
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
