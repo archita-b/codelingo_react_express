@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const port = process.env.PORT;
-const host = process.env.host;
+const host = process.env.HOST;
 const db_port = process.env.db_port;
 const db_user = process.env.db_user;
 const db_password = process.env.db_password;

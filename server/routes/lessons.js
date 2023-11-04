@@ -3,11 +3,11 @@ import {
   getLessons,
   getQuestionsByLessonNumber,
 } from "../controller/lessons.js";
-// import { isLoggedIn } from "../middleware/auth.js";
+import { isLoggedIn } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getLessons);
-router.get("/:id", getQuestionsByLessonNumber);
+router.get("/", isLoggedIn, getLessons);
+router.get("/:id", isLoggedIn, getQuestionsByLessonNumber);
 
 export default router;
