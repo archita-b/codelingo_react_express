@@ -1,21 +1,25 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LessonSelector from "./components/LessonSelector";
 import Lesson from "./components/Lesson";
+import LoginPage from "./components/LoginPage";
+import Home from "./components/Home";
+import { isAuthenticated } from "./requests";
 
 export default function App() {
-  const [selectedLesson, setSelectedLesson] = useState(null);
+  useEffect(() => {
+    const userStatus = isAuthenticated();
+    if (userStatus === 401) {
+    }
+  }, []);
 
   return (
-    <div>
-      {selectedLesson === null ? (
-        <LessonSelector setSelectedLesson={setSelectedLesson} />
-      ) : (
-        <Lesson
-          selectedLesson={selectedLesson}
-          setSelectedLesson={setSelectedLesson}
-        />
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

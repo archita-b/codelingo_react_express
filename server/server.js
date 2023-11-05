@@ -16,9 +16,9 @@ function error(err, req, res, next) {
   res.status(500).json({ message: "Internal server error" });
 }
 
-app.use(session({ secret: config.secret }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({ secret: config.secret }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(
   cors({
@@ -30,7 +30,7 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 
-app.use("/api/auth", authRouter);
+// app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/lessons", lessonRouter);
