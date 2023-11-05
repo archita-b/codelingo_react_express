@@ -5,6 +5,7 @@ import LessonSelector from "./components/LessonSelector";
 import Lesson from "./components/Lesson";
 import LoginPage from "./components/LoginPage";
 import Home from "./components/Home";
+import NotFoundPage from "./components/NotFoundPage";
 import { isAuthenticated } from "./requests";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path="login" element={<LoginPage />} />
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
