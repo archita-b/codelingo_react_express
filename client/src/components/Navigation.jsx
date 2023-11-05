@@ -7,8 +7,8 @@ import { isAuthenticated } from "../requests";
 export default function Navigation() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const userStatus = isAuthenticated();
+  useEffect(async () => {
+    const userStatus = await isAuthenticated();
 
     if (userStatus === 401) {
       navigate("/login");

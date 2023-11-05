@@ -7,6 +7,7 @@ export default function Home() {
 
   return (
     <div>
+      <p>Home page</p>
       {selectedLesson === null ? (
         <LessonSelector setSelectedLesson={setSelectedLesson} />
       ) : (
