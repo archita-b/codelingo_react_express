@@ -1,10 +1,10 @@
 import pool from "./database.js";
 
-export async function registerUserDB(user_name, password, is_admin) {
+export async function registerUserDB(user_name, password) {
   try {
     const result = await pool.query(
-      "INSERT INTO users (user_name,password,is_admin) VALUES ($1,$2,$3) RETURNING *",
-      [user_name, password, is_admin]
+      "INSERT INTO users (user_name,password) VALUES ($1,$2) RETURNING *",
+      [user_name, password]
     );
     return result.rows[0].user_name;
   } catch (error) {

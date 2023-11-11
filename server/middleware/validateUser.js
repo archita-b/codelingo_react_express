@@ -1,7 +1,7 @@
 export default function validateUser(req, res, next) {
-  const { userName, password } = req.body;
+  const { username, password } = req.body;
 
-  if (userName.trim() === "")
+  if (username.trim() === "")
     return res.status(400).json({ message: "Invalid username" });
 
   if (password.length < 4)

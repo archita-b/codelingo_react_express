@@ -6,7 +6,7 @@ const url = "http://localhost:7000/api";
 //   }
 // }
 
-export async function isAuthenticated() {
+export async function getUserSession() {
   const res = await fetch(url + "/sessions");
   return res.status;
 }
@@ -23,6 +23,16 @@ export async function getQuestionsForLesson(lesson_id) {
   });
   const data = await res.json();
   return data;
+}
+
+export async function registerUser(username, password) {
+  const res = await fetch(url + "/users", {
+    method: "POST",
+    headers: { "Content-type": "Application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+  const data = await res.json();
+  return { status: res.status, data };
 }
 
 export async function createUserSession(username, password) {
