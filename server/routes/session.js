@@ -1,10 +1,10 @@
 import express from "express";
-import { logOut, userLogin } from "../controller/session.js";
+import { getSession, logOut, userLogin } from "../controller/session.js";
 import { isLoggedIn } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", isLoggedIn);
+router.get("/", isLoggedIn, getSession);
 router.post("/", userLogin);
 router.delete("/", logOut);
 

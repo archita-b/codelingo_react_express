@@ -13,11 +13,11 @@ export default function Home() {
   async function navigateToHome() {
     const userStatus = await getUserSession();
 
-    // if (userStatus === 401) {
-    //   navigate("/login");
-    // } else {
-    navigate("/");
-    // }
+    if (userStatus === 401) {
+      navigate("/login");
+    } else {
+      navigate("/");
+    }
   }
 
   useEffect(() => {

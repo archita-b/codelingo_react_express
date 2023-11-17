@@ -9,10 +9,10 @@ const url = "http://localhost:7000/api";
 export async function getLessons() {
   const res = await fetch(url + "/lessons", { credentials: "include" });
 
-  if (!res.ok) throw new Error("unauthorized");
+  if (!res.ok) return;
 
   const data = await res.json();
-  return data;
+  return { data, status: res.status };
 }
 
 export async function getQuestionsForLesson(lesson_id) {
@@ -36,16 +36,20 @@ export async function registerUser(username, password) {
 export async function createUserSession(username, password) {
   const res = await fetch(url + "/sessions", {
     method: "POST",
-    headers: { "Content-type": "Application/json" },
+    headers: { "content-type": "application/json" },
     body: JSON.stringify({ username, password }),
+    credentials: "include",
   });
   const data = await res.json();
   return { status: res.status, data };
 }
 
 export async function getUserSession() {
-  const res = await fetch(url + "/sessions");
-  return res.status;
+  const res = await fetch(url + "/sessions", {
+    credentials: "include",
+  });
+  const data = await res.json();
+  return { data, status: res.status };
 }
 
 export async function deleteSession() {

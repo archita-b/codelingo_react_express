@@ -6,7 +6,7 @@ import {
 export async function getLessons(req, res) {
   try {
     const response = await getLessonsDB();
-    return await res.status(200).json(response);
+    await res.status(200).json(response);
   } catch (error) {
     return res.json({ message: "Error retrieving lessons" });
   }

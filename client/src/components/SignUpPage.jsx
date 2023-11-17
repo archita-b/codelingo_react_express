@@ -17,6 +17,7 @@ export default function SignUpPage() {
     const res = await registerUser(userName, password, reEnterPassword);
 
     if (res.status !== 201) return;
+    console.log("status=", res.status);
     navigate("/login");
   }
 

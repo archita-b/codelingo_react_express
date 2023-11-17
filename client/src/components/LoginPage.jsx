@@ -19,7 +19,12 @@ export default function LoginPage() {
   return (
     <div className="bg-sky-100 h-screen">
       <div className="flex justify-end p-6">
-        <Link to="/signup">Sign Up</Link>
+        <Link
+          to="/signup"
+          className="bg-green-500 text-white text-lg font-semibold p-3 rounded-md"
+        >
+          Sign Up
+        </Link>
       </div>
 
       <div className="flex justify-center items-center">
@@ -44,7 +49,7 @@ export default function LoginPage() {
               onClick={handleLogin}
               className="shadow rounded p-2 bg-blue-500 hover:bg-blue-600 text-white font-medium"
             >
-              Login
+              LogIn
             </button>
           </div>
         </div>

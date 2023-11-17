@@ -6,6 +6,14 @@ import {
   getUserInfoDB,
 } from "../model/session.js";
 
+export async function getSession(req, res) {
+  try {
+    res.json({ status: 200, message: "success" });
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 export async function userLogin(req, res) {
   try {
     const { username, password } = req.body;

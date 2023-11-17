@@ -7,8 +7,17 @@ export default function SignOut() {
   async function handleSignOut() {
     const status = await deleteSession();
 
-    if (status === 204) Navigate("/login");
+    if (status === 204) navigate("/login");
   }
 
-  return <button onClick={handleSignOut}>signout</button>;
+  return (
+    <div className="flex justify-end">
+      <button
+        onClick={handleSignOut}
+        className="bg-blue-500 text-white text-lg font-semibold p-3 m-3 rounded-md"
+      >
+        SignOut
+      </button>
+    </div>
+  );
 }
