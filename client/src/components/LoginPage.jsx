@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { createUserSession, registerUser } from "../requests";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserSession } from "../requests";
 
 export default function LoginPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   async function handleLogin() {
-    await createUserSession(userName, password);
+    const res = await createUserSession(userName, password);
+
+    if (res.status !== 201) return;
+
+    navigate("/");
   }
 
   return (

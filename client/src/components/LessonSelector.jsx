@@ -5,9 +5,11 @@ export default function LessonSelector({ setSelectedLesson }) {
   const [lessonData, setLessonData] = useState([]);
 
   useEffect(() => {
-    getLessons().then((data) => {
-      if (data) setLessonData(data);
-    });
+    getLessons()
+      .then((data) => {
+        if (data) setLessonData(data);
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (

@@ -21,8 +21,8 @@ CREATE TABLE question_type (
 -- create questions table
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY,
-    type VARCHAR(50) REFERENCES question_type(type) ON DELETE CASCADE,
-    lesson_id INTEGER REFERENCES lessons(id) ON DELETE CASCADE,
+    type VARCHAR(50) REFERENCES question_type(type),
+    lesson_id INTEGER REFERENCES lessons(id),
     question VARCHAR(256) NOT NULL,
     answers TEXT [],
     correctanswer INTEGER NOT NULL
@@ -30,8 +30,8 @@ CREATE TABLE questions (
 
 -- create lesson_completion table
 CREATE TABLE lesson_completion (
-  user_id SERIAL REFERENCES users(id) ON DELETE CASCADE,
-  lesson_id INTEGER REFERENCES lessons(id) ON DELETE CASCADE,
+  user_id SERIAL REFERENCES users(id),
+  lesson_id INTEGER REFERENCES lessons(id),
   is_completed BOOLEAN DEFAULT FALSE
 );
 

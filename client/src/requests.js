@@ -6,13 +6,11 @@ const url = "http://localhost:7000/api";
 //   }
 // }
 
-export async function getUserSession() {
-  const res = await fetch(url + "/sessions");
-  return res.status;
-}
-
 export async function getLessons() {
   const res = await fetch(url + "/lessons", { credentials: "include" });
+
+  if (!res.ok) throw new Error("unauthorized");
+
   const data = await res.json();
   return data;
 }
@@ -42,5 +40,10 @@ export async function createUserSession(username, password) {
     body: JSON.stringify({ username, password }),
   });
   const data = await res.json();
-  return data;
+  return { status: res.status, data };
+}
+
+export async function getUserSession() {
+  const res = await fetch(url + "/sessions");
+  return res.status;
 }

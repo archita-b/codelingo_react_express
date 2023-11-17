@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import Lesson from "./Lesson";
-import LessonSelector from "./LessonSelector";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserSession } from "../requests";
 

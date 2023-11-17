@@ -8,8 +8,8 @@ import {
 
 export async function userLogin(req, res) {
   try {
-    const { userName, password } = req.body;
-    const userInfo = await getUserInfoDB(userName);
+    const { username, password } = req.body;
+    const userInfo = await getUserInfoDB(username);
 
     const matchedPassword = await bcrypt.compare(password, userInfo.password);
     if (!matchedPassword)
