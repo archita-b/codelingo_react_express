@@ -47,3 +47,12 @@ export async function getUserSession() {
   const res = await fetch(url + "/sessions");
   return res.status;
 }
+
+export async function deleteSession() {
+  const res = await fetch(url + "/sessions", {
+    credentials: "include",
+    method: "DELETE",
+  });
+
+  if (res.ok) return res.status;
+}

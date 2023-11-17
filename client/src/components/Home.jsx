@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Lesson from "./Lesson";
 import LessonSelector from "./LessonSelector";
+import SignOut from "./SignOut";
 import { useNavigate } from "react-router-dom";
 import { getUserSession } from "../requests";
 
@@ -12,11 +13,11 @@ export default function Home() {
   async function navigateToHome() {
     const userStatus = await getUserSession();
 
-    if (userStatus === 401) {
-      navigate("/login");
-    } else {
-      navigate("/");
-    }
+    // if (userStatus === 401) {
+    //   navigate("/login");
+    // } else {
+    navigate("/");
+    // }
   }
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function Home() {
 
   return (
     <div>
+      <SignOut />
       {selectedLesson === null ? (
         <LessonSelector setSelectedLesson={setSelectedLesson} />
       ) : (
