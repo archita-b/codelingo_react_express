@@ -11,9 +11,9 @@ export default function Home() {
   const navigate = useNavigate();
 
   async function navigateToHome() {
-    const userStatus = await getUserSession();
+    const { status } = await getUserSession();
 
-    if (userStatus === 401) {
+    if (status === 401) {
       navigate("/login");
     } else {
       navigate("/");

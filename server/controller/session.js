@@ -23,7 +23,7 @@ export async function userLogin(req, res) {
     if (!matchedPassword)
       return res.status(401).json({ message: "Wrong password" });
 
-    const sessionId = uuidv4(); // create in db
+    const sessionId = uuidv4();
     await createSessionDB(userInfo.id, sessionId);
 
     return res
@@ -40,12 +40,11 @@ export async function userLogin(req, res) {
     throw new Error(error);
   }
 }
-// look for session id that has not been expired
 
 export async function logOut(req, res) {
   try {
     const sessionId = req.cookies.sessionId;
-    await deleteSession(sessionId); // set expiry date instead of deleting
+    await deleteSession(sessionId);
     await res.clearCookie("sessionId");
     await res.sendStatus(204);
   } catch (error) {

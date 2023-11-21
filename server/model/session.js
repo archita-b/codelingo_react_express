@@ -21,7 +21,7 @@ export async function createSessionDB(user_id, session_id) {
 
 export async function getUserSessionDB(session_id) {
   const result = await pool.query(
-    `SELECT user_id FROM sessions WHERE session_id=$1`,
+    `SELECT * FROM sessions WHERE session_id=$1 And deleted=false`,
     [session_id]
   );
   if (result.rowCount === 0) throw new Error("Session does not exist");

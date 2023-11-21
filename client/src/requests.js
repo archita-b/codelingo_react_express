@@ -8,7 +8,7 @@ const url = "http://localhost:7000/api";
 
 export async function getLessons() {
   const res = await fetch(url + "/lessons", { credentials: "include" });
-
+  // console.log("res", res);
   if (!res.ok) return;
 
   const data = await res.json();
@@ -48,6 +48,8 @@ export async function getUserSession() {
   const res = await fetch(url + "/sessions", {
     credentials: "include",
   });
+
+  if (res.status !== 200) return { data: null, status: 401 };
   const data = await res.json();
   return { data, status: res.status };
 }
