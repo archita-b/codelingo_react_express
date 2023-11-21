@@ -44,9 +44,12 @@ export async function userLogin(req, res) {
 export async function logOut(req, res) {
   try {
     const sessionId = req.cookies.sessionId;
-    await deleteSession(sessionId);
-    await res.clearCookie("sessionId");
-    await res.sendStatus(204);
+    const updatedSessions = await deleteSession(sessionId);
+
+    if (updatedSessions.expired === true) {
+      await res.clearCookie("sessionId");
+      await res.status(200).json({ message: "User session expired" });
+    }
   } catch (error) {
     res.sendStatus(500);
   }

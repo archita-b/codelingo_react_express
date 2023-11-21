@@ -15,7 +15,6 @@ export async function isLoggedIn(req, res, next) {
     if (req.cookies === undefined || req.cookies.sessionId === undefined) {
       return res.sendStatus(401);
     }
-    // c99669be-aa74-4084-9236-f5b1254e6b1f
     const sessionId = req.cookies.sessionId;
     const session = await getUserSessionDB(sessionId);
 

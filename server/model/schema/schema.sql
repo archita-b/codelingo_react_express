@@ -39,5 +39,5 @@ CREATE TABLE lesson_completion (
 CREATE TABLE sessions (
   user_id SERIAL REFERENCES users(id),
   session_id VARCHAR PRIMARY KEY,
-  deleted BOOLEAN DEFAULT FALSE
+  expired BOOLEAN DEFAULT FALSE
 );

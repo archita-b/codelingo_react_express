@@ -50,6 +50,7 @@ export async function getUserSession() {
   });
 
   if (res.status !== 200) return { data: null, status: 401 };
+
   const data = await res.json();
   return { data, status: res.status };
 }
@@ -60,5 +61,9 @@ export async function deleteSession() {
     method: "DELETE",
   });
 
-  if (res.ok) return res.status;
+  if (!res.ok) return { data: null, status: res.status };
+
+  const data = await res.json();
+
+  return { data, status: res.status };
 }

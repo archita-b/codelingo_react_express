@@ -5,9 +5,9 @@ export default function SignOut() {
   const navigate = useNavigate();
 
   async function handleSignOut() {
-    const status = await deleteSession();
+    const data = await deleteSession();
 
-    if (status === 204) navigate("/login");
+    if (data.status === 200) navigate("/login");
   }
 
   return (
