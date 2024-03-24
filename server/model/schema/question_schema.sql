@@ -1,4 +1,4 @@
--- populating questions table
+-- populating Question table
 INSERT INTO questions (type,lesson_id,question,answers,correctanswer) VALUES 
 ('mcq', 1, '1. What is JavaScript primarily used for?', ARRAY ['styling web pages',
       'creating interactive web applications',
@@ -40,3 +40,13 @@ INSERT INTO questions (type,lesson_id,question,answers,correctanswer) VALUES
     ('mcq', 2, '5. Question 5?', ARRAY ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'], '1'),
     ('mcq', 3, '1. Question 1?', ARRAY ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'], '1'),
     ('mcq', 4, '1. Question 1?', ARRAY ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'], '1');
+    
+    
+-- populating Lesson table
+INSERT INTO "Lesson"(id,lesson_name) VALUES ('1','chapter 1'),('2','chapter 2'),('3','chapter 3'),('4','chapter 4');
+
+-- populating QuestionType table
+INSERT INTO "QuestionType"(type) VALUES ('mcq');
+
+-- populating Question table
+INSERT INTO "Question"(question_type,answers,correct_ans,lesson_id,question) VALUES ('mcq', ARRAY ['styling web pages','creating interactive web applications','managing databases','sending emails'], 2, 1, '1. What is JavaScript primarily used for?');
